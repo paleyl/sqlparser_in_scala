@@ -1,20 +1,96 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>net.smalldata</groupId>
   <artifactId>smalldata-core</artifactId>
   <version>0.1</version>
   <name>small data core project</name>
-  
-  <dependencies> 
+
+  <properties>
+    <java.version>1.8</java.version>
+    <scala.version>2.11.8</scala.version>
+    <scala.binary.version>2.11</scala.binary.version>
+  </properties>
+
+  <dependencies>
     <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
       <version>1.2.17</version>
     </dependency>
-  </dependencies>    
-      
+
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-library</artifactId>
+      <version>${scala.version}</version>
+    </dependency>
+    <!--dependency> <groupId>org.scala-lang</groupId> <artifactId>scala-compiler</artifactId> 
+      <version>${scala.version}</version> </dependency> <dependency> <groupId>org.scala-lang</groupId> 
+      <artifactId>scala-reflect</artifactId> <version>${scala.version}</version> 
+      </dependency -->
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <!--plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-shade-plugin</artifactId> 
+        <version>2.4.3</version> <executions> <execution> <phase>package</phase> 
+        <goals> <goal>shade</goal> </goals> <configuration> <transformers> <transformer 
+        implementation = "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer"> 
+        <mainClass>net.smalldata.sql.sqlparser.SqlParser</mainClass> </transformer> 
+        </transformers> </configuration> </execution> </executions> </plugin -->
+
+      <plugin>
+        <groupId>net.alchim31.maven</groupId>
+        <artifactId>scala-maven-plugin</artifactId>
+        <version>3.2.0</version>
+        <executions>
+          <execution>
+            <id>compile</id>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+            <phase>compile</phase>
+          </execution>
+          <execution>
+            <id>test-compile</id>
+            <goals>
+              <goal>testCompile</goal>
+            </goals>
+            <phase>test-compile</phase>
+          </execution>
+          <execution>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.1.1</version>
+        <executions>
+          <execution>
+            <phase>test</phase>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>net.smalldata.sql.sqlparser.SqlParser</mainClass>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
 </project>
