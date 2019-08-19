@@ -9,6 +9,7 @@ And you will see a json format output for the input sql,
 
 such as 
 
+```
 {
     "name":"--root",
     "from":{
@@ -118,3 +119,4 @@ such as
         "statement3":"select uin, rcv_amt from table3 where rcv_amt < 100"
     }
 }
+```
