@@ -1,6 +1,9 @@
 # sqlparser_in_scala
-a simple sql parser in scala, output sql structure in json format
+A simple sql parser in scala, output sql structure in json format.
 
+Support select/from/where/group by/order by/join & union. 
+
+Input the following command in your commandline (here we use windows command for example)
 ```
 1. git clone https://github.com/paleyl/sqlparser_in_scala.git
 2. cd sqlparser_in_scala
