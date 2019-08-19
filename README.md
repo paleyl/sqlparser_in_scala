@@ -8,7 +8,7 @@ Input the following command in your commandline (here we use windows command for
 1. git clone https://github.com/paleyl/sqlparser_in_scala.git
 2. cd sqlparser_in_scala
 3. mvn package
-4. java -cp target\smalldata-core-0.1-shaded.jar net.smalldata.sql.sqlparser.SqlParser -inputFile data\sql\sql2.txt
+4. java -cp target\smalldata-core-0.1-shaded.jar net.smalldata.sql.sqlparser.SqlParser -inputFile data\sql\sql.txt
 ```
 
 And you will see a json format output for the input sql,
