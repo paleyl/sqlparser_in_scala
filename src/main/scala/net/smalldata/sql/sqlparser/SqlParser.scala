@@ -5,6 +5,8 @@ import java.util.regex._
 import scala.io.Source
 import scala.util.matching.Regex
 
+import com.beust.jcommander.JCommander;
+import com.beust.jcommander.Parameter;
 import org.apache.log4j.{LogManager}
 
 /*
@@ -107,7 +109,8 @@ class SqlQuery(
 object SqlParser {
   val logger = LogManager.getLogger(this.getClass())
 
- 
+  @Parameter(names = Array("-inputFile"), description = "the inputFile of sql string)", arity = 1)
+  private val inputFile = ""; 
   
   def parseRegex(query: String, regex: String): Matcher = {
     val reg = Pattern.compile(regex)
@@ -290,7 +293,7 @@ object SqlParser {
   }
   
   def main(args: Array[String]) {
-    val inputSqlFile = 
+    val inputSqlFile = if(inputFile != "") inputFile else
         System.getProperty("user.dir") + // 默认使用本地文件
         "/data/sql/sql.txt"
     val tmpSql = Source.fromFile(inputSqlFile).getLines()
