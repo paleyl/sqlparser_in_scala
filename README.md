@@ -1,7 +1,7 @@
 # sqlparser_in_scala
 a simple sql parser in scala, output sql structure in json format
 
-1. https://github.com/paleyl/sqlparser_in_scala.git
+1. git clone https://github.com/paleyl/sqlparser_in_scala.git
 2. cd sqlparser_in_scala
 3. mvn package
 
