@@ -292,7 +292,7 @@ object SqlParser {
   def main(args: Array[String]) {
     val inputSqlFile = 
         System.getProperty("user.dir") + // 默认使用本地文件
-        "/data/data/sql.txt"
+        "/data/sql/sql.txt"
     val tmpSql = Source.fromFile(inputSqlFile).getLines()
     .toArray.map(l => l.split("--")(0)).mkString(" ") + "--ENDOFSQL"
     .replace("\t", " ")

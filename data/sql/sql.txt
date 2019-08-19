@@ -1,0 +1,11 @@
+--insert into wechat_pay_data_mining::t_tmp_test 
+select t1.uin, pay_amt, -- 金额
+rcv_amt,
+pay_cnt -- 笔数
+from (select uin, pay_cnt from table1 where uin > 0) t1 
+join (select uin, sum(pay_amt) AS pay_amt from table2 where uin < 100 group by uin) t2 
+on (t1.uin = t2.uin)
+join (select uin, rcv_amt from table3 where rcv_amt < 100) t3 
+on (t1.uin = t3.uin)
+where pay_amt > 10
+-- select uin, pay_cnt from table1 t1
